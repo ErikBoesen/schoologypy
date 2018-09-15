@@ -1,10 +1,10 @@
-import schoolopy
+import schoologypy
 import yaml
 
 with open('example_config.yml', 'r') as f:
     cfg = yaml.load(f)
 
-sc = schoolopy.Schoology(schoolopy.Auth(cfg['key'], cfg['secret']))
+sc = schoologypy.Schoology(schoologypy.Auth(cfg['key'], cfg['secret']))
 sc.limit = 10  # Only retrieve 10 objects max
 
 print('Your name is %s' % sc.get_me().name_display)

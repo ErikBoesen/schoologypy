@@ -1,4 +1,4 @@
-import schoolopy
+import schoologypy
 import yaml
 import webbrowser as wb
 
@@ -9,7 +9,7 @@ with open('example_config.yml', 'r') as f:
 # Make sure to replace 'https://www.schoology.com' with your school's domain.
 DOMAIN = 'https://www.schoology.com'
 
-auth = schoolopy.Auth(cfg['key'], cfg['secret'], three_legged=True, domain=DOMAIN)
+auth = schoologypy.Auth(cfg['key'], cfg['secret'], three_legged=True, domain=DOMAIN)
 # Request authorization URL to open in another window.
 url = auth.request_authorization()
 
@@ -27,7 +27,7 @@ if not auth.authorize():
     raise SystemExit('Account was not authorized.')
 
 # Create a Schoology instance with Auth as a parameter.
-sc = schoolopy.Schoology(auth)
+sc = schoologypy.Schoology(auth)
 sc.limit = 10  # Only retrieve 10 objects max
 
 print('Your name is %s' % sc.get_me().name_display)

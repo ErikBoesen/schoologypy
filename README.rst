@@ -1,22 +1,22 @@
-schoolopy
-=========
+schoologypy
+===========
 
     Python wrapper for Schoology’s API.
 
-.. image:: https://badge.fury.io/py/schoolopy.svg
-    :target: https://badge.fury.io/py/schoolopy
+.. image:: https://badge.fury.io/py/schoologypy.svg
+    :target: https://badge.fury.io/py/schoologypy
 
 Installation
 ------------
-You may easily install ``schoolopy`` from PyPI with ``pip3 install schoolopy``.
+You may easily install ``schoologypy`` from PyPI with ``pip3 install schoologypy``.
 
 Setup & Authorization
 ---------------------
 
-Before any use of ``schoolopy``, you'll need to import it.
+Before any use of ``schoologypy``, you'll need to import it.
 
 .. code:: py
-    import schoolopy
+    import schoologypy
 
 You'll then need to instantiate the ``Auth`` class and, using that object, instantiate the API wrapper. There are two ways of authenticating with Schoology: two-legged and three-legged. The former is far simpler and useful for apps used by only one user who is capable of managing their own API keys, but if you're building a web app to interact with Schoology you'll need to use three-legged.
 
@@ -24,17 +24,17 @@ Obtain your consumer API key and secret from ``[Schoology URL]/api``.
 
 .. code:: py
     # Two-legged
-    sc = schoolopy.Schoology(schoolopy.Auth(key, secret))
+    sc = schoologypy.Schoology(schoologypy.Auth(key, secret))
     sc.get_feed()  # etc.
 
 .. code:: py
     # Three-legged
-    auth = schoolopy.Auth(key, secret, three_legged=True, domain='https://schoology.com')  # Replace URL with that of your school's Schoology
+    auth = schoologypy.Auth(key, secret, three_legged=True, domain='https://schoology.com')  # Replace URL with that of your school's Schoology
     url = auth.request_authorization()
     # Redirect user to that URL as appropriate for your application. Once user has performed action, continue.
     if not auth.authorize():
         raise SystemExit('User not authorized!')
-    sc = schoolopy.Schoology(auth)
+    sc = schoologypy.Schoology(auth)
 
 Example
 -------
